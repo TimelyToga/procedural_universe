@@ -1,3 +1,4 @@
+// A procedurally generated Spiral galaxy 
 class Galaxy implements Drawable  {
   
   ArrayList<Star> stars;
@@ -6,9 +7,10 @@ class Galaxy implements Drawable  {
   int maxX = 400, maxY = 400;
   int MIN_X = 30, MIN_Y = 30;
   
-  float starSize;
+  float blackHoleSize;
   color cStar;
   
+  // Generate a disk galaxy 
   private void generateDisk() {
     for(int a = 0; a < this.numStars; a++) {
       Star o = new Star(random(maxX), random(maxY), randColor());
@@ -17,11 +19,11 @@ class Galaxy implements Drawable  {
   }
   
   private color spiralColor() {
+    // Generate reddish colors for spiral; not in use 
      return color(random(214, 220), 242, 255); 
   }
     
   private void generateSpiral() {
-    //float A = 0.5, B = 0.4, N = 8;
     float scale = 2;
     float upperBound = 6 *  PI;
     float spiralCompression = 0.25;
@@ -70,15 +72,17 @@ class Galaxy implements Drawable  {
     
     generateSpiral();
     
-    starSize = random(5, 15);
+    blackHoleSize = random(5, 15);
     cStar = color(0, 0, 0);
   }
   
   public void drawme(float t) {
-    // Draw star
+    // White point light at center 
     pointLight(255, 255, 255, 0, 0, 0);
-    fill(cStar);
-    sphere(starSize);
+    
+    // Draw black hole at center of galaxy
+    fill(0);
+    sphere(blackHoleSize);
     
     // Render stars 
     for(Star s: stars) {

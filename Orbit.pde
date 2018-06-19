@@ -1,3 +1,4 @@
+// A circular orbit, with a planet orbiting
 class Orbit implements Drawable{
   float width, height; 
   
