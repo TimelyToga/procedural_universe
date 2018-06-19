@@ -1,15 +1,12 @@
 import java.util.ArrayList;
 
-float x,y,z;
+float pi = 0, t = 0;
 
-float pi, phi;
-
-float t = 0; 
-
-SolarSystem ss; 
-Galaxy g;
+SolarSystem starSystem; 
+Galaxy galaxy;
 
 color randColor() {
+  // Generate a random, but bright color
   float threshold = 300;
   float r = random(255);
   float g = random(255);
@@ -24,18 +21,17 @@ color randColor() {
 }
 
 void setup() {
+  // Basic setup
   size(600, 480, P3D); 
-  x = width/2;
-  y = height/2;
-  z = 0;
   rotateX(45);
   rotateY(45);
   rotateZ(45);
   lights();
   
-  //ss = new SolarSystem(10);
-
-  g = new Galaxy(20000);
+  //starSystem = new SolarSystem(10);
+  
+  // Initialize new Galaxy with 20k stars
+  galaxy = new Galaxy(20000);
 
   strokeWeight(2);
 }
@@ -50,9 +46,12 @@ void draw() {
   box(400, 400, 400); 
   ambientLight(102, 102, 102);
     
-  //ss.drawme(t);
-  g.drawme(t);
+  //starSystem.drawme(t);
+  galaxy.drawme(t);
   
+  // Rotate world by a little bit
   pi += 0.003;
+  
+  // Increment timestep 
   t += 0.001;
 }
